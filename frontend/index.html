@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감정 분석 다이어리</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 폰트 추가 (Google Fonts: Noto Sans KR) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 커스텀 스타일 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind 설정 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                    },
+                    colors: {
+                        emotion: {
+                            positive: '#fef08a', /* bg-yellow-200 */
+                            negative: '#bfdbfe', /* bg-blue-200 */
+                            neutral: '#e9d5ff',  /* bg-purple-200 */
+                            default: '#f3f4f6',  /* bg-gray-100 */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body id="app-container" class="bg-gray-100 min-h-screen text-gray-800 transition-colors duration-500 flex flex-col items-center">
+
+    <div class="w-full max-w-md bg-white/80 backdrop-blur-md min-h-screen shadow-2xl relative overflow-hidden flex flex-col">
+        <!-- 헤더 -->
+        <header class="p-6 text-center border-b border-gray-200 flex justify-between items-center z-10">
+            <button id="back-btn" class="hidden text-gray-600 hover:text-black font-bold focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <title>뒤로 가기</title>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <h1 id="header-title" class="text-xl font-bold flex-1 text-center">나의 감정 일기</h1>
+            <div class="w-6"></div> <!-- 균형 맞추기용 빈 공간 -->
+        </header>
+
+        <!-- 메인 화면 (캘린더 뷰) -->
+        <main id="calendar-view" class="flex-1 p-6 flex flex-col z-10 transition-opacity duration-300">
+            <!-- 달력 컨트롤 -->
+            <div class="flex justify-between items-center mb-6">
+                <button id="prev-month" class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition">
+                    &lt;
+                </button>
+                <h2 id="current-month-year" class="text-2xl font-bold">2026. 04</h2>
+                <button id="next-month" class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition">
+                    &gt;
+                </button>
+            </div>
+
+            <!-- 요일 헤더 -->
+            <div class="grid grid-cols-7 gap-2 mb-2 text-center text-sm font-medium text-gray-500">
+                <div class="text-red-500">일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div class="text-blue-500">토</div>
+            </div>
+
+            <!-- 달력 그리드 -->
+            <div id="calendar-grid" class="grid grid-cols-7 gap-2 mb-8 flex-1">
+                <!-- JS에서 채움 -->
+            </div>
+
+            <!-- 월간 감정 통계 -->
+            <div class="mt-auto bg-white rounded-xl p-4 shadow-sm border border-gray-100">
+                <h3 class="text-sm font-bold mb-3 text-gray-600">이달의 감정 통계</h3>
+                <div class="flex justify-around text-center">
+                    <div class="flex flex-col items-center">
+                        <span class="text-2xl mb-1">😊</span>
+                        <span class="text-xs text-gray-500">긍정</span>
+                        <span id="stat-positive" class="font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-2xl mb-1">😐</span>
+                        <span class="text-xs text-gray-500">중립</span>
+                        <span id="stat-neutral" class="font-bold">0</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-2xl mb-1">😢</span>
+                        <span class="text-xs text-gray-500">부정</span>
+                        <span id="stat-negative" class="font-bold">0</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 상세 화면 (일기 쓰기 뷰) -->
+        <main id="detail-view" class="hidden flex-1 p-6 flex flex-col z-10 transition-opacity duration-300">
+            <div class="text-center mb-6">
+                <h2 id="detail-date" class="text-lg font-medium text-gray-500">2026년 4월 1일 수요일</h2>
+                <div id="emotion-emoji" class="text-5xl mt-4 h-16 transition-all duration-300 transform scale-100"></div>
+            </div>
+
+            <div class="flex-1 flex flex-col relative w-full h-full">
+                <!-- 로딩 인디케이터 (분석 중) -->
+                <div id="loading-indicator" class="hidden absolute inset-0 bg-white/50 z-20 flex flex-col items-center justify-center rounded-xl backdrop-blur-sm">
+                    <div class="w-10 h-10 border-4 border-gray-200 border-t-purple-500 rounded-full animate-spin"></div>
+                    <p class="mt-4 text-sm font-medium text-gray-600">감정을 분석하고 있어요...</p>
+                </div>
+
+                <textarea id="diary-content" class="flex-1 w-full bg-white/60 focus:bg-white rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-purple-300 resize-none transition-all border border-gray-200 shadow-inner" placeholder="오늘은 어떤 하루를 보내셨나요? 여기에 일기를 작성해 보세요."></textarea>
+            </div>
+
+            <div class="flex justify-end gap-3 mt-6">
+                <!-- 표시 모드 버튼 -->
+                <button id="delete-btn" class="hidden px-4 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition font-medium">삭제</button>
+                <button id="save-btn" class="flex-1 px-4 py-3 bg-gray-800 text-white rounded-lg hover:bg-black transition font-bold shadow-md">일기 저장 (감정 분석)</button>
+            </div>
+        </main>
+        
+        <!-- 에러 토스트 메시지 -->
+        <div id="toast-message" class="absolute top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg opacity-0 transition-opacity duration-300 pointer-events-none z-50">
+            에러 메시지
+        </div>
+    </div>
+
+    <!-- 스크립트 분리 연결 -->
+    <script src="app.js"></script>
+</body>
+</html>
