@@ -34,3 +34,22 @@ jobs:
           # 빌드 시간 단축을 위해 캐시를 사용
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/sentiment-diary:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/sentiment-diary:buildcache,mode=max
+
+  deploy:
+    needs: build_and_push
+    runs-on: self-hosted
+    
+    steps:
+      - name: Pull Docker Image
+        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/sentiment-diary:latest
+
+      - name: Stop existing container
+        continue-on-error: true
+        run: docker stop sentiment-diary-container
+
+      - name: Remove existing container
+        continue-on-error: true
+        run: docker rm sentiment-diary-container
+
+      - name: Run new container
+        run: docker run -d -p 8000:8000 --name sentiment-diary-container ${{ secrets.DOCKERHUB_USERNAME }}/sentiment-diary:latest

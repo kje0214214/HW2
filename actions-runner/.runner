@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "WNDMS",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus3.actions.githubusercontent.com/MXr7QrFePo644aIi7OAsejIk5B6wusHal4ktfjJV3mR5Do3fVk/",
+  "gitHubUrl": "https://github.com/kje0214214/HW2",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
