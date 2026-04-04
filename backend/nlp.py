@@ -17,7 +17,12 @@ class SentimentAnalyzer:
             self.load_model()
             
         results = self.classifier(text[:512]) # 토큰 최대 길이 제한(기본 512)
-        scores = results[0]
+        
+        # 반환 형태가 [[{}]] 인지 [{}] 인지 방어적으로 처리
+        if results and isinstance(results[0], list):
+            scores = results[0]
+        else:
+            scores = results
         
         pos_score = 0.0
         neg_score = 0.0
