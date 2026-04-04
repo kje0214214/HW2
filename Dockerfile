@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 
 # 사전 학습된 모델을 빌드 시점에 아예 다운로드받아 두면 컨테이너 최초 실행 시 지연시간을 없앨 수 있습니다.
 # 백엔드 코드가 동작하기 전에 python에서 모델을 한번 캐싱하게 만듭니다.
-RUN python -c "from transformers import pipeline; pipeline('text-classification', model='snunlp/KR-FinBert-SC')"
+RUN python -c "from transformers import pipeline; pipeline('text-classification', model='matthew1031/ko-sentiment-analysis')"
 
 # 프론트엔드 정적 파일 스크립트 복사
 COPY frontend/ ./frontend/
