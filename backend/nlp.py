@@ -8,8 +8,8 @@ class SentimentAnalyzer:
     def load_model(self):
         print("NLP 모델 로드 중... (최초 실행 시 다운로드될 수 있습니다)")
         start_time = time.time()
-        # nlptown/bert-base-multilingual-uncased-sentiment 는 다국어(한국어 포함) 1~5성급 리뷰 감정 분석 모델입니다.
-        self.classifier = pipeline("text-classification", model="nlptown/bert-base-multilingual-uncased-sentiment", return_all_scores=True)
+        # jaehyeong/koelectra-base-v3-generalized-sentiment-analysis 는 아주 뛰어난 한국어 감정 분류 모델입니다.
+        self.classifier = pipeline("text-classification", model="jaehyeong/koelectra-base-v3-generalized-sentiment-analysis")
         print(f"NLP 모델 로드 완료! (소요 시간: {time.time() - start_time:.2f}초)")
 
     def analyze(self, text: str) -> str:
@@ -18,26 +18,20 @@ class SentimentAnalyzer:
             
         results = self.classifier(text[:512]) # 토큰 최대 길이 제한(기본 512)
         
-        # 반환 형태가 [[{}]] 인지 [{}] 인지 방어적으로 처리
-        if results and isinstance(results[0], list):
-            scores = results[0]
-        else:
-            scores = results
+        # 반환 형태 파싱
+        score_dict = results[0] if isinstance(results, list) else results
         
-        pos_score = 0.0
-        neg_score = 0.0
+        label = score_dict['label']
+        score = score_dict['score']
         
-        for item in scores:
-            label = item['label']
-            if label in ['4 stars', '5 stars']:
-                pos_score += item['score']
-            elif label in ['1 star', '2 stars']:
-                neg_score += item['score']
+        # 예측 확신도(score)가 0.6 미만으로 애매하다면 중립 반환
+        if score < 0.6:
+            return "neutral"
         
-        # 확실한 감정(0.6 이상)이 감지될 때만 긍정/부정 판단, 애매하면 중립
-        if pos_score >= 0.6:
+        # 1은 긍정, 0은 부정 (확신도가 0.6 이상일 때만 도달함)
+        if label == '1' or 'POS' in label.upper():
             return "positive"
-        elif neg_score >= 0.6:
+        elif label == '0' or 'NEG' in label.upper():
             return "negative"
         else:
             return "neutral"
