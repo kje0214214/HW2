@@ -1,0 +1,2032 @@
+[2026-04-04 15:51:43Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\kje02\Antigravity HW2\actions-runner\.credentials'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'Runner': 'C:\Users\kje02\Antigravity HW2\actions-runner\.runner'
+[2026-04-04 15:51:43Z INFO Worker] Version: 2.333.1
+[2026-04-04 15:51:43Z INFO Worker] Commit: 6792966801e8925346735b68c03bf9f347af4646
+[2026-04-04 15:51:43Z INFO Worker] Culture: ko-KR
+[2026-04-04 15:51:43Z INFO Worker] UI Culture: ko-KR
+[2026-04-04 15:51:43Z INFO Worker] Waiting to receive the job message from the channel.
+[2026-04-04 15:51:43Z INFO ProcessChannel] Receiving message of length 20784, with hash 'dfb0c8ee326f47c5b8d244bc46480ee658026c7dbf2cc89f8a7e6f17005e4066'
+[2026-04-04 15:51:43Z INFO Worker] Message received.
+[2026-04-04 15:51:43Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/ci.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 43,
+        "col": 15,
+        "lit": "Pull Docker Image"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 44,
+              "col": 14,
+              "expr": "format('docker pull {0}/sentiment-diary:latest', secrets.DOCKERHUB_USERNAME)"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "0af93d58-9d77-4380-a61f-7248322798ad",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 46,
+        "col": 15,
+        "lit": "Stop existing container"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 48,
+              "col": 14,
+              "lit": "docker stop sentiment-diary-container"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "continueOnError": {
+        "type": 5,
+        "file": 1,
+        "line": 47,
+        "col": 28,
+        "bool": true
+      },
+      "id": "9ca7a52e-b36f-4b31-b3ff-f43426dd7b3d",
+      "name": "__run_2"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 50,
+        "col": 15,
+        "lit": "Remove existing container"
+      },
+      "contextName": "__run_3",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 52,
+              "col": 14,
+              "lit": "docker rm sentiment-diary-container"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "continueOnError": {
+        "type": 5,
+        "file": 1,
+        "line": 51,
+        "col": 28,
+        "bool": true
+      },
+      "id": "c366a0d7-a695-46de-a8d6-d68a35d8aa9a",
+      "name": "__run_3"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 54,
+        "col": 15,
+        "lit": "Run new container"
+      },
+      "contextName": "__run_4",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 55,
+              "col": 14,
+              "expr": "format('docker run -d -p 8000:8000 --name sentiment-diary-container {0}/sentiment-diary:latest', secrets.DOCKERHUB_USERNAME)"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "6ae7373d-a0fe-4d2d-94b7-af60cc968d71",
+      "name": "__run_4"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DOCKERHUB_USERNAME": {
+      "value": "***",
+      "isSecret": true
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions.runner.requirenode24": {
+      "value": "false"
+    },
+    "actions.runner.usenode24bydefault": {
+      "value": "false"
+    },
+    "actions.runner.warnonnode20": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_batch_action_resolution": {
+      "value": "false"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "true"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_runner_compare_workflow_parser": {
+      "value": "false"
+    },
+    "actions_runner_deprecate_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_emit_composite_markers": {
+      "value": "false"
+    },
+    "actions_runner_kill_linux_arm32": {
+      "value": "false"
+    },
+    "actions_runner_node20_removal_date": {
+      "value": ""
+    },
+    "actions_runner_node24_default_date": {
+      "value": ""
+    },
+    "actions_service_container_command": {
+      "value": "true"
+    },
+    "actions_set_orchestration_id_env_for_actions": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_snapshot_preflight_hosted_runner_check": {
+      "value": "false"
+    },
+    "actions_snapshot_preflight_image_gen_pool_check": {
+      "value": "false"
+    },
+    "actions_use_bearer_token_for_codeload": {
+      "value": "false"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "deploy"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "0dc44ca9-ed1b-4212-ae14-e13ae113de67.deploy.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "deploy"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "0dc44ca9-ed1b-4212-ae14-e13ae113de67",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "0dc44ca9-ed1b-4212-ae14-e13ae113de67",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "9d1dfa18-988e-5571-863d-d0761d187a77",
+  "jobDisplayName": "deploy",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/MXr7QrFePo644aIi7OAsejIk5B6wusHal4ktfjJV3mR5Do3fVk/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus3.actions.githubusercontent.com/MXr7QrFePo644aIi7OAsejIk5B6wusHal4ktfjJV3mR5Do3fVk/",
+          "GenerateIdTokenUrl": "",
+          "ConnectivityChecks": "[\"https://broker.actions.githubusercontent.com/health\",\"https://token.actions.githubusercontent.com/ready\",\"https://run.actions.githubusercontent.com/health\"]"
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-3-azure-eastus.actions.githubusercontent.com/179/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+        },
+        {
+          "k": "repository",
+          "v": "***/HW2"
+        },
+        {
+          "k": "repository_owner",
+          "v": "***"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "272457834"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/***/HW2.git"
+        },
+        {
+          "k": "run_id",
+          "v": "23891703560"
+        },
+        {
+          "k": "run_number",
+          "v": "2"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "3"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "272457834"
+        },
+        {
+          "k": "actor",
+          "v": "***"
+        },
+        {
+          "k": "workflow",
+          "v": "Build and Push Docker Image"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "2ecc09739e8a76b7311269e2fc8be66263c785b1"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "***@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "***"
+                              },
+                              {
+                                "k": "username",
+                                "v": "***"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "***@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "***"
+                              },
+                              {
+                                "k": "username",
+                                "v": "***"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+                        },
+                        {
+                          "k": "message",
+                          "v": "Feat: Add CD workflow and deploy to self-hosted runner"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2026-04-02T17:27:08+09:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "34a32a1d24e4bd0ff82a6f0f468dbb2c27a767aa"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/***/HW2/commit/f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/***/HW2/compare/2ecc09739e8a...f9f6775a0e7e"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "***@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "***"
+                          },
+                          {
+                            "k": "username",
+                            "v": "***"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "***@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "***"
+                          },
+                          {
+                            "k": "username",
+                            "v": "***"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+                    },
+                    {
+                      "k": "message",
+                      "v": "Feat: Add CD workflow and deploy to self-hosted runner"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2026-04-02T17:27:08+09:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "34a32a1d24e4bd0ff82a6f0f468dbb2c27a767aa"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/***/HW2/commit/f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "***@gmail.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "***"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/***/HW2/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/***/HW2/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/***/HW2/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/***/HW2.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/***/HW2/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/***/HW2/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/***/HW2/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/***/HW2/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/***/HW2/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/***/HW2/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1774946131.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/***/HW2/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/***/HW2/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/***/HW2/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/***/HW2/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "***/HW2"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/***/HW2.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pull_requests",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/***/HW2/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/***/HW2"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1197001240.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/***/HW2/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/***/HW2/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/***/HW2/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/***/HW2/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/***/HW2/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "JavaScript"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/***/HW2/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/***/HW2/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/***/HW2/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "HW2"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOR1jKGA"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/***/HW2/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/272457834?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "***@gmail.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/***/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/***/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/***/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/***/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/***"
+                          },
+                          {
+                            "k": "id",
+                            "v": 272457834.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "***"
+                          },
+                          {
+                            "k": "name",
+                            "v": "***"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDOED1gag"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/***/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/***/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/***/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/***/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/***/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/***"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pull_request_creation_policy",
+                      "v": "all"
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/***/HW2/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1775118835.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/***/HW2/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 10.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:***/HW2.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/***/HW2/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/***/HW2/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/***/HW2/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/***/HW2/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/***/HW2"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/***/HW2/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/***/HW2/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/***/HW2/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2026-04-01T07:03:45Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/***/HW2"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/272457834?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/***/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/***/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/***/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/***/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/***"
+                    },
+                    {
+                      "k": "id",
+                      "v": 272457834.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "***"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDOED1gag"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/***/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/***/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/***/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/***/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/***/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/***"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "***/HW2/.github/workflows/ci.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "f9f6775a0e7e36dfcaee6747d9c693de0793f277"
+        },
+        {
+          "k": "repository_id",
+          "v": "1197001240"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "***"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 69948399775.0
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2,
+      "d": [
+        {
+          "k": "build_and_push",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "result",
+                "v": "success"
+              },
+              {
+                "k": "outputs",
+                "v": {
+                  "t": 2
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOED1gag"
+}
+[2026-04-04 15:51:43Z INFO JobRunner] Job ID 9d1dfa18-988e-5571-863d-d0761d187a77
+[2026-04-04 15:51:43Z INFO ConfigurationStore] currentAssemblyLocation: C:\Users\kje02\Antigravity HW2\actions-runner\bin\Runner.Worker.dll
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] binPath: C:\Users\kje02\Antigravity HW2\actions-runner\bin
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] RootFolder: C:\Users\kje02\Antigravity HW2\actions-runner
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'Runner': 'C:\Users\kje02\Antigravity HW2\actions-runner\.runner'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] ConfigFilePath: C:\Users\kje02\Antigravity HW2\actions-runner\.runner
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'MigratedRunner': 'C:\Users\kje02\Antigravity HW2\actions-runner\.runner_migrated'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] MigratedConfigFilePath: C:\Users\kje02\Antigravity HW2\actions-runner\.runner_migrated
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\kje02\Antigravity HW2\actions-runner\.credentials'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] CredFilePath: C:\Users\kje02\Antigravity HW2\actions-runner\.credentials
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'MigratedCredentials': 'C:\Users\kje02\Antigravity HW2\actions-runner\.credentials_migrated'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] MigratedCredFilePath: C:\Users\kje02\Antigravity HW2\actions-runner\.credentials_migrated
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'Service': 'C:\Users\kje02\Antigravity HW2\actions-runner\.service'
+[2026-04-04 15:51:43Z INFO ConfigurationStore] ServiceConfigFilePath: C:\Users\kje02\Antigravity HW2\actions-runner\.service
+[2026-04-04 15:51:43Z INFO ConfigurationStore] Read setting file: 382 chars
+[2026-04-04 15:51:43Z INFO JobRunner] Initializing launch client
+[2026-04-04 15:51:43Z INFO JobServerQueue] Initializing results client
+[2026-04-04 15:51:43Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2026-04-04 15:51:43Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2026-04-04 15:51:43Z INFO JobServerQueue] Start process web console line queue.
+[2026-04-04 15:51:43Z INFO JobServerQueue] Start process file upload queue.
+[2026-04-04 15:51:43Z INFO JobServerQueue] Start results file upload queue.
+[2026-04-04 15:51:43Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-04-04 15:51:43Z INFO JobServerQueue] Start process timeline update queue.
+[2026-04-04 15:51:43Z INFO ExecutionContext] Initializing Job context
+[2026-04-04 15:51:43Z INFO ExecutionContext] Initialize GitHub context
+[2026-04-04 15:51:43Z INFO ExecutionContext] Initialize Env context
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO JobRunner] Starting the job execution context.
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO JobRunner] Validating directory permissions for: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Tools': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_tool'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:51:43Z INFO JobRunner] Getting job extension.
+[2026-04-04 15:51:43Z INFO JobRunner] Initialize job. Getting all job steps.
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'Credentials': 'C:\Users\kje02\Antigravity HW2\actions-runner\.credentials'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known config file 'SetupInfo': 'C:\Users\kje02\Antigravity HW2\actions-runner\.setup_info'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO PipelineDirectoryManager] Loading tracking config if exists: C:\Users\kje02\Antigravity HW2\actions-runner\_work\_PipelineMapping\***/HW2\PipelineFolder.json
+[2026-04-04 15:51:43Z INFO PipelineDirectoryManager] Updating job run properties.
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO JobExtension] Downloading actions
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Actions': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_actions'
+[2026-04-04 15:51:43Z INFO JobExtension] Adding .
+[2026-04-04 15:51:43Z INFO JobExtension] Adding .
+[2026-04-04 15:51:43Z INFO JobExtension] Adding .
+[2026-04-04 15:51:43Z INFO JobExtension] Adding .
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:51:43Z INFO JobExtension] Total accessible running process: 291.
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO JobExtension] Start checking server connectivity.
+[2026-04-04 15:51:43Z INFO JobExtension] Check server connectivity for https://broker.actions.githubusercontent.com/health.
+[2026-04-04 15:51:43Z INFO JobExtension] Check server connectivity for https://token.actions.githubusercontent.com/ready.
+[2026-04-04 15:51:43Z INFO JobExtension] Check server connectivity for https://run.actions.githubusercontent.com/health.
+[2026-04-04 15:51:43Z INFO JobExtension] Start checking service connectivity in background.
+[2026-04-04 15:51:43Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "7070bbed-0aa1-4c63-9138-87fb88349c77",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-04T15:51:43.639954Z",
+  "finishTime": "2026-04-04T15:51:43.7310358Z"
+}.
+[2026-04-04 15:51:43Z INFO JobRunner] Total job steps: 4.
+[2026-04-04 15:51:43Z INFO JobRunner] Run all job steps.
+[2026-04-04 15:51:43Z INFO StepsRunner] Processing step: DisplayName='Pull Docker Image'
+[2026-04-04 15:51:43Z INFO StepsRunner] Evaluating: success()
+[2026-04-04 15:51:43Z INFO StepsRunner] Result: true
+[2026-04-04 15:51:43Z INFO StepsRunner] Starting the step.
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-04 15:51:43Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] Process started with process id 23884, waiting for process exit.
+[2026-04-04 15:51:43Z INFO Worker] Listening for cancel message from the channel.
+[2026-04-04 15:51:43Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] Finished process 23884 with exit code 0, and elapsed time 00:00:00.0607701.
+[2026-04-04 15:51:43Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:51:43Z INFO ExecutionContext] Write event payload to C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:51:43Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-04 15:51:43Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-04 15:51:43Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:51:43Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:51:43Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:51:43Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:51:43Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:43Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:51:43Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:51:43Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:51:43Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:51:43Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:51:43Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\fe371ca5-5105-4ae0-a7ab-5d5374c97ead.ps1'"'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\HW2\HW2'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:51:43Z INFO ProcessInvokerWrapper] Process started with process id 8628, waiting for process exit.
+[2026-04-04 15:51:44Z INFO ResultServer] Successfully started websocket client.
+[2026-04-04 15:51:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '7070bbed-0aa1-4c63-9138-87fb88349c77', success rate: 1/1.
+[2026-04-04 15:51:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:44Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-04 15:51:44Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_7070bbed-0aa1-4c63-9138-87fb88349c77.1
+[2026-04-04 15:51:44Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-04-04 15:51:44Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2026-04-04 15:51:46Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-04-04 15:51:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:51:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:51:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:51:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:51:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:52:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:52:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:52:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:52:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:52:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:52:13Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:52:23Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:52:23Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:52:23Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:52:33Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:52:33Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:52:33Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:52:43Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:52:43Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:52:43Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:52:46Z INFO JobServerQueue] Stop aggressive process web console line queue.
+[2026-04-04 15:52:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:52:53Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:52:53Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:52:53Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:53:03Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:03Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:03Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:13Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:13Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:13Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:21Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:53:23Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:23Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:23Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] Finished process 8628 with exit code 0, and elapsed time 00:01:44.0470835.
+[2026-04-04 15:53:27Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_bf789be2-2b6b-4302-8e19-f58a7f2071bb) is empty; skipping attachment upload
+[2026-04-04 15:53:27Z INFO StepsRunner] Step result: 
+[2026-04-04 15:53:27Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "0af93d58-9d77-4380-a61f-7248322798ad",
+  "stepContextName": "__run",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 105,
+  "startTime": "2026-04-04T15:51:43.7417035Z",
+  "finishTime": "2026-04-04T15:53:27.948565Z"
+}.
+[2026-04-04 15:53:27Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-04 15:53:27Z INFO StepsRunner] Current state: job state = ''
+[2026-04-04 15:53:27Z INFO StepsRunner] Processing step: DisplayName='Stop existing container'
+[2026-04-04 15:53:27Z INFO StepsRunner] Evaluating: success()
+[2026-04-04 15:53:27Z INFO StepsRunner] Result: true
+[2026-04-04 15:53:27Z INFO StepsRunner] Starting the step.
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:27Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-04 15:53:27Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] Process started with process id 9816, waiting for process exit.
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:27Z INFO ProcessInvokerWrapper] Finished process 9816 with exit code 0, and elapsed time 00:00:00.0193552.
+[2026-04-04 15:53:27Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:27Z INFO ExecutionContext] Write event payload to C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:27Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:27Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-04 15:53:27Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-04 15:53:27Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-04 15:53:27Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:53:27Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:53:27Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:53:27Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:53:28Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:28Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:53:28Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:53:28Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:53:28Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:53:28Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\1fe68c70-9ac2-4eb7-aa96-d9ac1fc329db.ps1'"'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\HW2\HW2'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Process started with process id 13072, waiting for process exit.
+[2026-04-04 15:53:28Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-04 15:53:28Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_0af93d58-9d77-4380-a61f-7248322798ad.1
+[2026-04-04 15:53:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record '0af93d58-9d77-4380-a61f-7248322798ad', success rate: 1/1.
+[2026-04-04 15:53:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9ca7a52e-b36f-4b31-b3ff-f43426dd7b3d', success rate: 1/1.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Finished process 13072 with exit code 1, and elapsed time 00:00:00.4196780.
+[2026-04-04 15:53:28Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_339bdfb1-1e37-483b-8348-79f4aff43909) is empty; skipping attachment upload
+[2026-04-04 15:53:28Z INFO ExecutionContext] Updated step result (continue on error)
+[2026-04-04 15:53:28Z INFO StepsRunner] Step result: Succeeded
+[2026-04-04 15:53:28Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "9ca7a52e-b36f-4b31-b3ff-f43426dd7b3d",
+  "stepContextName": "__run_2",
+  "result": "succeeded",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-04T15:53:27.9501334Z",
+  "finishTime": "2026-04-04T15:53:28.4461794Z"
+}.
+[2026-04-04 15:53:28Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-04 15:53:28Z INFO StepsRunner] Current state: job state = ''
+[2026-04-04 15:53:28Z INFO StepsRunner] Processing step: DisplayName='Remove existing container'
+[2026-04-04 15:53:28Z INFO StepsRunner] Evaluating: success()
+[2026-04-04 15:53:28Z INFO StepsRunner] Result: true
+[2026-04-04 15:53:28Z INFO StepsRunner] Starting the step.
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-04 15:53:28Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Process started with process id 16740, waiting for process exit.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Finished process 16740 with exit code 0, and elapsed time 00:00:00.0205063.
+[2026-04-04 15:53:28Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:28Z INFO ExecutionContext] Write event payload to C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:28Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-04 15:53:28Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-04 15:53:28Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-04 15:53:28Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:53:28Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:53:28Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:53:28Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:53:28Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:28Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:53:28Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:53:28Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:53:28Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:53:28Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\607e0059-5aca-4aa0-a726-305cedc31954.ps1'"'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\HW2\HW2'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Process started with process id 13264, waiting for process exit.
+[2026-04-04 15:53:28Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-04-04 15:53:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9ca7a52e-b36f-4b31-b3ff-f43426dd7b3d', success rate: 1/1.
+[2026-04-04 15:53:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c366a0d7-a695-46de-a8d6-d68a35d8aa9a', success rate: 1/1.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:28Z INFO ProcessInvokerWrapper] Finished process 13264 with exit code 1, and elapsed time 00:00:00.4559718.
+[2026-04-04 15:53:28Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_19c4823b-5dcf-4cd0-9bb9-29e5e99a3980) is empty; skipping attachment upload
+[2026-04-04 15:53:28Z INFO ExecutionContext] Updated step result (continue on error)
+[2026-04-04 15:53:28Z INFO StepsRunner] Step result: Succeeded
+[2026-04-04 15:53:28Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "c366a0d7-a695-46de-a8d6-d68a35d8aa9a",
+  "stepContextName": "__run_3",
+  "result": "succeeded",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-04T15:53:28.4510251Z",
+  "finishTime": "2026-04-04T15:53:28.9961723Z"
+}.
+[2026-04-04 15:53:28Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-04 15:53:28Z INFO StepsRunner] Current state: job state = ''
+[2026-04-04 15:53:28Z INFO StepsRunner] Processing step: DisplayName='Run new container'
+[2026-04-04 15:53:28Z INFO StepsRunner] Evaluating: success()
+[2026-04-04 15:53:28Z INFO StepsRunner] Result: true
+[2026-04-04 15:53:28Z INFO StepsRunner] Starting the step.
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:28Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:28Z INFO StepsRunner] Which2: 'chcp'
+[2026-04-04 15:53:29Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] Process started with process id 1476, waiting for process exit.
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] Finished process 1476 with exit code 0, and elapsed time 00:00:00.0143706.
+[2026-04-04 15:53:29Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:29Z INFO ExecutionContext] Write event payload to C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_github_workflow\event.json
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2026-04-04 15:53:29Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command set-env
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command set-output
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command save-state
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command add-path
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command warning
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command error
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command notice
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command debug
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command group
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2026-04-04 15:53:29Z INFO ActionCommandManager] Register action command extension for command echo
+[2026-04-04 15:53:29Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:53:29Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:53:29Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:53:29Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:53:29Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Work': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work'
+[2026-04-04 15:53:29Z INFO HostContext] Well known directory 'Temp': 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp'
+[2026-04-04 15:53:29Z INFO ScriptHandler] Which2: 'pwsh'
+[2026-04-04 15:53:29Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2026-04-04 15:53:29Z INFO ScriptHandler] Defaulting to powershell
+[2026-04-04 15:53:29Z INFO ScriptHandler] Which2: 'powershell'
+[2026-04-04 15:53:29Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] Starting process:
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\b819b0a6-1db3-4ddf-b244-f305f4b88cc7.ps1'"'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Working directory: 'C:\Users\kje02\Antigravity HW2\actions-runner\_work\HW2\HW2'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2026-04-04 15:53:29Z INFO ProcessInvokerWrapper] Process started with process id 24736, waiting for process exit.
+[2026-04-04 15:53:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'c366a0d7-a695-46de-a8d6-d68a35d8aa9a', success rate: 1/1.
+[2026-04-04 15:53:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6ae7373d-a0fe-4d2d-94b7-af60cc968d71', success rate: 1/1.
+[2026-04-04 15:53:29Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-04-04 15:53:29Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2026-04-04 15:53:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6ae7373d-a0fe-4d2d-94b7-af60cc968d71', success rate: 1/1.
+[2026-04-04 15:53:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:30Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2026-04-04 15:53:30Z INFO ProcessInvokerWrapper] Finished process 24736 with exit code 0, and elapsed time 00:00:01.5196255.
+[2026-04-04 15:53:30Z INFO CreateStepSummaryCommand] Step Summary file (C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp\_runner_file_commands\step_summary_63ad67b1-a9f0-43cf-bd0f-709ef7db7a9e) is empty; skipping attachment upload
+[2026-04-04 15:53:30Z INFO StepsRunner] Step result: 
+[2026-04-04 15:53:30Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "6ae7373d-a0fe-4d2d-94b7-af60cc968d71",
+  "stepContextName": "__run_4",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 2,
+  "startTime": "2026-04-04T15:53:28.9985282Z",
+  "finishTime": "2026-04-04T15:53:30.5880839Z"
+}.
+[2026-04-04 15:53:30Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2026-04-04 15:53:30Z INFO StepsRunner] Current state: job state = ''
+[2026-04-04 15:53:30Z INFO JobRunner] Finalize job.
+[2026-04-04 15:53:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:53:30Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:30Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:30Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:53:30Z INFO JobExtension] Initialize Env context
+[2026-04-04 15:53:30Z INFO JobExtension] Initialize steps context
+[2026-04-04 15:53:30Z INFO JobExtension] Total accessible running process: 292.
+[2026-04-04 15:53:30Z INFO JobExtension] Inspecting process environment variables. PID: 16508 (PickerHost)
+[2026-04-04 15:53:30Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2026-04-04 15:53:30Z INFO JobExtension] Wait for all connectivity checks to finish.
+[2026-04-04 15:53:30Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-04-04 15:53:30Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-04-04 15:53:30Z INFO JobExtension] Connectivity check result: GitHub.Runner.Worker.JobExtension+CheckResult
+[2026-04-04 15:53:30Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "30e096e4-3d62-49b6-8d78-f2c3cdc9609a",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2026-04-04T15:53:30.5995509Z",
+  "finishTime": "2026-04-04T15:53:30.6733892Z"
+}.
+[2026-04-04 15:53:30Z INFO JobRunner] Job result after all job steps finish: Succeeded
+[2026-04-04 15:53:30Z INFO JobRunner] Completing the job execution context.
+[2026-04-04 15:53:30Z INFO JobRunner] Shutting down the job server queue.
+[2026-04-04 15:53:30Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2026-04-04 15:53:31Z INFO JobServerQueue] All queue process task stopped.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record '30e096e4-3d62-49b6-8d78-f2c3cdc9609a', success rate: 1/1.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Web console line queue drained.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Uploading 2 files in one shot.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Try to upload 2 log files or attachments, success rate: 2/2.
+[2026-04-04 15:53:31Z INFO JobServerQueue] File upload queue drained.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Starting results-based upload queue...
+[2026-04-04 15:53:31Z INFO JobServerQueue] Uploading 5 file(s) in one shot through results service.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-04 15:53:31Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_9ca7a52e-b36f-4b31-b3ff-f43426dd7b3d.1
+[2026-04-04 15:53:32Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-04 15:53:32Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_c366a0d7-a695-46de-a8d6-d68a35d8aa9a.1
+[2026-04-04 15:53:33Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-04 15:53:33Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_6ae7373d-a0fe-4d2d-94b7-af60cc968d71.1
+[2026-04-04 15:53:34Z INFO JobServerQueue] Got a step log file to send to results service.
+[2026-04-04 15:53:34Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_30e096e4-3d62-49b6-8d78-f2c3cdc9609a.1
+[2026-04-04 15:53:35Z INFO JobServerQueue] Got a job log file to send to results service.
+[2026-04-04 15:53:35Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, C:\Users\kje02\Antigravity HW2\actions-runner\_diag\blocks\0dc44ca9-ed1b-4212-ae14-e13ae113de67_9d1dfa18-988e-5571-863d-d0761d187a77.1
+[2026-04-04 15:53:36Z INFO JobServerQueue] Tried to upload 5 file(s) to results, success rate: 5/5.
+[2026-04-04 15:53:36Z INFO JobServerQueue] Results upload queue drained.
+[2026-04-04 15:53:36Z INFO JobServerQueue] Timeline update queue drained.
+[2026-04-04 15:53:36Z INFO JobServerQueue] Disposing job server ...
+[2026-04-04 15:53:36Z INFO JobServerQueue] Disposing results server ...
+[2026-04-04 15:53:36Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2026-04-04 15:53:36Z INFO TempDirectoryManager] Cleaning runner temp folder: C:\Users\kje02\Antigravity HW2\actions-runner\_work\_temp
+[2026-04-04 15:53:36Z INFO HostContext] Well known directory 'Bin': 'C:\Users\kje02\Antigravity HW2\actions-runner\bin'
+[2026-04-04 15:53:36Z INFO HostContext] Well known directory 'Root': 'C:\Users\kje02\Antigravity HW2\actions-runner'
+[2026-04-04 15:53:36Z INFO HostContext] Well known directory 'Diag': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag'
+[2026-04-04 15:53:36Z INFO HostContext] Well known config file 'Telemetry': 'C:\Users\kje02\Antigravity HW2\actions-runner\_diag\.telemetry'
+[2026-04-04 15:53:36Z INFO JobRunner] Raising job completed against run service
+[2026-04-04 15:53:37Z INFO Worker] Job completed.
